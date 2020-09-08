@@ -46,20 +46,13 @@ while (xOpt_Final==False):
     # xOpt_Final=True
 
     for index, value in np.ndenumerate(columnsInX_Opt):
-        # print(i)
         if regressor_ols.pvalues[index]>max:
             max=regressor_ols.pvalues[index]
             finalIndex=index
     
     if max>0.05:
-        print("finalIndex ")
-        print(finalIndex)
         X_opt=np.delete(X_opt, np.s_[finalIndex], axis=1) 
-        # X_opt=np.delete(X_opt, X_opt[finalIndex], axis=1)
-        # print("X_OPT")
-        # print(X_opt)
         columnsInX_Opt=np.delete(columnsInX_Opt, [finalIndex])
-        # columnsInX_Opt=columnsInX_Opt[columnsInX_Opt!=finalIndex]
     
     elif max<=0.05:
         xOpt_Final=True
